@@ -339,7 +339,7 @@ if pressure_unit == "Pa":
         [
             "Volume Change (%)",
             "Volume Change (mm³)",
-            "Total Volume (L)",
+            "Total Volume (mm³)",
             "Pressure (Pa)",
             "ΔP (Pa)",
         ]
@@ -347,7 +347,7 @@ if pressure_unit == "Pa":
     display_df.columns = [
         "Volume Change (%)",
         "Volume Change (mm³)",
-        "Total Volume (L)",
+        "Total Volume (mm³)",
         "Pressure (Pa)",
         "Pressure Change ΔP (Pa)",
     ]
@@ -360,7 +360,7 @@ else:  # cmHg
         [
             "Volume Change (%)",
             "Volume Change (mm³)",
-            "Total Volume (L)",
+            "Total Volume (mm³)",
             "Pressure (cmHg)",
             "ΔP (cmHg)",
         ]
@@ -368,7 +368,7 @@ else:  # cmHg
     display_df.columns = [
         "Volume Change (%)",
         "Volume Change (mm³)",
-        "Total Volume (L)",
+        "Total Volume (mm³)",
         "Pressure (cmHg)",
         "Pressure Change ΔP (cmHg)",
     ]
