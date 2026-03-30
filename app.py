@@ -32,7 +32,7 @@ def calculate_height(radius, volume):
 
 
 # Plotting range for Radius
-r_min, r_max = 5.0, 25.0
+r_min, r_max = 10.0, 20.0
 r_values = np.linspace(r_min, r_max, 500)
 # 50% to 150% in 10% increments
 percentages = np.arange(0.5, 1.6, 0.1)
@@ -84,8 +84,8 @@ for x_tick in x_ticks:
         line_width=1,
     )
 
-# Add horizontal dashed lines at every y-axis tick (every 20 mm)
-y_ticks = np.arange(0, 151, 20)
+# Add horizontal dashed lines at every y-axis tick (every 10 mm)
+y_ticks = np.arange(10, 61, 10)
 for y_tick in y_ticks:
     fig.add_hline(
         y=y_tick,
@@ -127,7 +127,7 @@ fig.update_layout(
         gridcolor="rgba(200, 200, 200, 0.2)",
     ),
     yaxis=dict(
-        range=[0, 150],
+        range=[10, 60],
         showgrid=True,
         gridwidth=1,
         gridcolor="rgba(200, 200, 200, 0.2)",
