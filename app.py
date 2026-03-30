@@ -16,7 +16,7 @@ P_ATMOS_CMHG = 76.0  # Standard atmospheric pressure in cmHg
 PA_TO_CMHG = 76 / 101325  # ~0.000750062 (1 Pa ≈ 0.00075 cmHg)
 
 # --- Sidebar Inputs ---
-st.sidebar.header("Input Parameters")
+st.sidebar.header("Cylinder Size")
 
 # Toggle for pressure units (first element)
 pressure_unit = st.sidebar.radio(
@@ -43,26 +43,13 @@ v_start_input_mm3 = st.sidebar.number_input(
 )
 # Auto-convert to liters
 v_start_input_liters = v_start_input_mm3 / 1e6
-st.sidebar.metric("Starting Volume (L)", f"{v_start_input_liters:.6f} L")
+st.sidebar.metric("Starting Volume (mm³)", f"{v_start_input_mm3:,.0f} mm³")
 
 # Convert to m³ for calculations
 v_start_m3 = v_start_input_mm3 / 1e9
 
-# --- Gas Amount Section ---
-st.sidebar.header("Gas Physics (PV=nRT at 25°C, 1 atm)")
-st.sidebar.markdown(
-    f"""
-Amount of gas calculated from starting volume using ideal gas law.
-Total volume = starting volume + cylinder volume.
-
-**Starting Pressure:** 1 atm = {P_ATMOS_PA:,.0f} Pa = {P_ATMOS_CMHG:.1f} cmHg
-"""
-)
-
 # Calculate number of moles from starting volume using PV = nRT → n = PV/(RT)
 n_moles = (P_ATMOS_PA * v_start_m3) / (R_CONSTANT * TEMP_K)
-
-st.sidebar.metric("Amount of air (moles)", f"{n_moles:.6f} mol")
 
 
 # --- Logic & Data ---
@@ -337,7 +324,8 @@ st.header("Pressure Changes")
 st.markdown(
     f"""
 **Physics Setup:**
-- Starting Volume: {v_start_input_liters:.2f} L at standard conditions (25°C, {P_ATMOS_PA/1000:.1f} kPa)
+- Ideal Gas Law: PV = nRT
+- Starting Volume: {v_start_input_mm3:,.0f} mm³ at standard conditions (25°C, 1 atm = {P_ATMOS_PA:,.0f} Pa = {P_ATMOS_CMHG:.1f} cmHg))
 - Amount of Air: {n_moles} mole(s)
 - Temperature: {TEMP_K - 273.15:.1f}°C (constant)
 - Cylinder adds volume while keeping molecular count constant
